@@ -14,7 +14,7 @@ export default function Navbar(){
 
             { user ? (
                 <>
-                    <span> Hello {user.name}</span>
+                    <span> Hello {user.name} The King</span>
                     <button onClick={handleLogout} style={{marginLeft: "10px"}}>Log Out</button>
                 </>   
             ) : (
