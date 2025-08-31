@@ -79,7 +79,7 @@ export default function CartPage() {
 
     return (
         <div>
-            <h1>Your Cart</h1>
+            <h1>Your Cart Guy </h1>
             <ul>
                 {cartItems.map((p)=>(
                     <li key={p._id}>
