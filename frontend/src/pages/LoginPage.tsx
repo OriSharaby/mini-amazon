@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import "../styles/LoginPage.css"; 
+
 
 
 
@@ -18,7 +22,7 @@ export default function LoginPage() {
             });
 
             localStorage.setItem("userInfo", JSON.stringify(data));
-            navigate("/");
+            navigate("/home");
         }
         catch(error: any){
             alert("Login failed: " + (error.response?.data?.message || "Unknown error"));
@@ -26,23 +30,46 @@ export default function LoginPage() {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleLogin}>
-                <input 
-                    type="text"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => {setEmail(e.target.value)}} 
-                /><br />
-                <input 
-                    type="text"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => {setPassword(e.target.value)}} 
-                /><br />
-                <button type="submit">Login</button>
-            </form>
+      <div className="login-container">
+        <div className="login-card">
+          <div className="logo"> Mini Amazon</div>
+          <h2>Welcome </h2>
+          <p>Log in/sign in to your account to continue</p>
+          <form onSubmit={handleLogin}>
+          <div className="input-group">
+            <span className="icon">
+              <FaEnvelope />
+            </span>
+            <input
+              type="email"
+              placeholder=" Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <span className="icon">            
+              <FaLock />
+            </span>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+        <button type="submit" className="login-button">Login</button>
+        </form>
+
+        <div className="links">
+         <Link to="/forgot-password">Forgot my password. 🔐</Link>
+         <Link to="register">Don't have an account? Register👤</Link>
         </div>
-    )
+      </div>
+    </div>
+  );
 }

@@ -12,7 +12,7 @@ export function useUser(): [UserInfo | null, (user: UserInfo | null) => void] {
     const [user, setUser] = useState<UserInfo | null>(null);
 
     useEffect(() => {
-        const userInfo = localStorage.getItem("UserInfo");
+        const userInfo = localStorage.getItem("userInfo");
         if(userInfo){
             setUser(JSON.parse(userInfo));
         }
