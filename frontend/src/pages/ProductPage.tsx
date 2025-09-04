@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../styles/ProductPage.css"
+
 
 interface Product{
     _id: string;
@@ -14,7 +16,7 @@ interface Product{
 
 export default function ProductPage(){
     const { id } = useParams<{ id: string }>();
-    const [product, setProducts] = useState<Product | null>(null);
+    const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -22,7 +24,8 @@ export default function ProductPage(){
         const fetchProduct = async () => {
         try{
             const res = await axios.get(`http://localhost:5000/api/products/${id}`);
-            setProducts(res.data);
+            console.log("Product data:", res.data);
+            setProduct(res.data);
         } catch(error){
             console.error("Error fetching product:", error);
         } finally{
@@ -70,7 +73,7 @@ export default function ProductPage(){
 
     return (
         <div className="product-page-container">
-            <button className="back-button" onClick={() => navigate(-1)}>⬅ חזרה</button>
+            <button className="back-button" onClick={() => navigate(-1)}>⬅ Back</button>
 
             <div className="product-card">
             <img src={product.image} alt={product.name} className="product-image" />
