@@ -1,6 +1,5 @@
 import { Request } from "express";
 import { Document } from "mongoose";
-import { Interface } from "readline";
 
 export interface IUser extends Document{
     id : string,
@@ -9,6 +8,6 @@ export interface IUser extends Document{
     isAdmin : boolean
 }
 
-interface AuthenticatedRequest extends Request {
+export interface AuthenticatedRequest extends Request {
     user? : IUser;
 }

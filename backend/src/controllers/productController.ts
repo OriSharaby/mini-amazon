@@ -7,7 +7,7 @@ export const getProducts = async (req : Request,res : Response) => {
         const pageSize = Number(req.query.pageSize) || 10;
         const page = Number(req.query.page) || 1;
         
-        const keyword = req.query.keyword
+        const keyword = req.query.keyword as string
         ? {
             $or:
             [
@@ -18,7 +18,9 @@ export const getProducts = async (req : Request,res : Response) => {
         {}
 
         const count = await Product.countDocuments(keyword);
+
         const products = await Product.find(keyword).limit(pageSize).skip(pageSize *(page -1));
+       
         res.json({
             products,
             page,
@@ -105,7 +107,7 @@ export const updateProduct = async (req: AuthenticatedRequest, res : Response) =
 export const deleteProduct = async (req: AuthenticatedRequest, res : Response) => {
     try{
         if(!req.user?.isAdmin){
-            res.status(401).json({message: "Not authorized as admin"});
+           return res.status(401).json({message: "Not authorized as admin"});
         }
 
         const product = await Product.findById(req.params.id);

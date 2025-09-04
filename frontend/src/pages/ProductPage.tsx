@@ -69,15 +69,33 @@ export default function ProductPage(){
     if(!product) return <div>Product not found!</div>;
 
     return (
-        <div>
-            <button onClick={() => navigate(-1)}>⬅ חזרה</button>
-            <h1> {product.name}</h1>
-            <img src={product.image} alt={product.name} width="200" />
-            <p> {product.description}</p>
-            <p> Price: ${product.price}</p>
-            <p> In stock: ${product.countInStock}</p>
-            <p> Category: ${product.category}</p>
-            <button onClick={addToCart}>Add to cart 🛒 </button>
+        <div className="product-page-container">
+            <button className="back-button" onClick={() => navigate(-1)}>⬅ חזרה</button>
+
+            <div className="product-card">
+            <img src={product.image} alt={product.name} className="product-image" />
+
+            <div className="product-info">
+                <h1>{product.name}</h1>
+                <p className="product-description">{product.description}</p>
+                <p className="product-price">Price: ${product.price}</p>
+                <p className="product-stock">
+                {product.countInStock > 0
+                    ? `In stock: ${product.countInStock}`
+                    : "Out of stock"}
+                </p>
+                <p className="product-category">Category: {product.category}</p>
+
+                <button
+                className="add-to-cart-btn"
+                onClick={addToCart}
+                disabled={product.countInStock === 0}
+                >
+                Add to Cart 🛒
+                </button>
+            </div>
+            </div>
         </div>
     );
+
 }

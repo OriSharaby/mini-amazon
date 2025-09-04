@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f4ff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.form-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.form-box h2 {
+  text-align: center;
+  color: #6c5ce7;
+  margin-bottom: 25px;
+}
+
+.form-box input,
+.form-box textarea,
+.form-box button {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-box textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-box button {
+  background-color: #6c5ce7;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-box button:hover {
+  background-color: #5a4cd1;
+}
+
+/* רספונסיביות למסכים קטנים (מובייל) */
+@media (max-width: 480px) {
+  .form-box {
+    padding: 20px;
+  }
+
+  .form-box h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -22,17 +22,21 @@ export default function HomePage(){
 
     if(loading) return <div>Loading products...</div>
 
-    return(
-        <div>
-            <h1>Products</h1>
-            <ul>
-                {products.map((p) => (
-                    <li key={p._id}>
-                        <Link to={`/product/${p._id}`}>{p.name}</Link> - ${p.price}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+   return (
+    <div className="home-container">
+      <h1 className="home-title">🛒 Products</h1>
+      <div className="product-grid">
+        {products.map((p) => (
+          <div className="product-card" key={p._id}>
+            <h3>{p.name}</h3>
+            <p>${p.price}</p>
+            <Link to={`/product/${p._id}`} className="product-link">
+              View Details
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
